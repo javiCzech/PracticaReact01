@@ -1,28 +1,34 @@
 import { useState } from 'react'
+import { GifGrid } from './GifGrid';
 
-export const GifSearch = ({setCategories}) => {
+export const GifSearch = ({onNewCategory}) => {
 
 const [inputValue, setinputValue] = useState('')    
 
 const handleSubmit = (e) => {
     e.preventDefault();
+    if(inputValue.trim().length <= 1) return;
+    onNewCategory(inputValue.trim())
+    setinputValue('')
+    // console.log(inputValue)
 }
 
 const onInputChange = ({target}) =>{
     setinputValue( target.value );
-    console.log(inputValue)
-    setCategories(categories => [inputValue, ...categories]);
+    
 }
-  return (
-    <form onClick={ handleSubmit }>
+  return (<>
+    <form onSubmit={ handleSubmit }>
        <input 
        type="text"
-       placeholder="One Pice"
+       placeholder="Buscar Gif"
        value={ inputValue }
        onChange={ onInputChange }>
        
        </input>
-    
+
     </form>
+    <GifGrid category={inputValue}/>
+    </>
   )
 }
