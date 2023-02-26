@@ -1,14 +1,16 @@
 import { useState } from "react"
-import { GifSearch } from "./GifSearch"
-import {GifGrid} from "./GifGrid"
+import { GifGrid } from "./components/GifGrid";
+import { GifSearch } from "./components/GifSearch"
+
 
 export const App = () => {
 
-  const [categories, setcategories] = useState(['one Piece']);
+  const [categories, setcategories] = useState(['One Piece']);
 
    const onAddCategory = (newCategory) => {
+    if (categories.includes(newCategory)) return;
     setcategories([...categories, newCategory])
-    // console.log(categories)
+    console.log(newCategory.typeof)
   }
 
   return (
@@ -16,12 +18,12 @@ export const App = () => {
     <h1>Practica de ReactJS - 01 GifAPP</h1>
 
     <GifSearch onNewCategory={onAddCategory}/>
-    <ol>{
-        categories.map( category => {
-          return <li key={category}>{category}</li>
-        })
+    {
+        categories.map( category => (
+          <GifGrid key={category} category={category}/>
+        ))
         }   
-    </ol>
+
     </>)
   
 }

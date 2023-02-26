@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { GifGrid } from './GifGrid';
+
 
 export const GifSearch = ({onNewCategory}) => {
 
@@ -21,14 +21,13 @@ const onInputChange = ({target}) =>{
     <form onSubmit={ handleSubmit }>
        <input 
        type="text"
-       placeholder="Buscar Gif"
+       placeholder="Buscar Gifs"
        value={ inputValue }
        onChange={ onInputChange }>
        
        </input>
 
     </form>
-    <GifGrid category={inputValue}/>
     </>
   )
 }
