@@ -48,7 +48,9 @@ h3 {
   margin-right: 20px;
   overflow: hidden;
 }
-
+.card-body{
+  background-color: white;
+}
 .card-title {
   background-color: white;
   flex: 1;
